@@ -1,0 +1,12 @@
+npx lint-staged
+
+echo "🔍 Rodando testes antes do push..."
+npm test
+
+if [ $? -ne 0 ]; then
+  echo "❌ Os testes falharam. Corrija os erros antes de fazer o push!"
+  exit 1
+fi
+
+echo "✅ Testes passaram! Push permitido."
+

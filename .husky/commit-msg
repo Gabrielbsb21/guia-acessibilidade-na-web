@@ -1,0 +1,2 @@
+# Valida a mensagem do commit
+npx --no-install commitlint --edit "$1"
