@@ -1,0 +1,61 @@
+---
+interface Props {
+  class?: string
+  /**
+   * Text to be displayed inside the skip link
+   * @default "Pular para o conteúdo principal"
+   */
+  text?: string
+  target?: string
+  [key: string]: string | number | boolean | undefined
+}
+
+const { class: className = '', text = 'Skip to content', target = '#main', ...rest }: Props = Astro.props
+---
+
+<div class:list={['skip-link', className]} {...rest}>
+  <a href={target}>{text}</a>
+</div>
+
+<script is:inline define:vars={{ target }}>
+  const skipLink = document.querySelector('.skip-link a')
+
+  skipLink.addEventListener('keydown', (event) => {
+    if (!event.target.closest('a')) return
+    const key = event.key
+
+    if (key !== 'Enter') return
+    event.preventDefault()
+
+    if (document.querySelector(target)) {
+      const targetElement = document.querySelector(target)
+      targetElement.setAttribute('tabindex', '-1')
+      targetElement.focus()
+    } else if (!document.querySelector(target) && document.querySelector('h1')) {
+      const firstHeading = document.querySelector('h1')
+      firstHeading.setAttribute('tabindex', '-1')
+      firstHeading.focus()
+    } else {
+      console.warn(`Skip link target "${target}" not found, and no <h1> element present.`)
+    }
+  })
+</script>
+
+<style>
+  :where(.skip-link a) {
+    position: absolute;
+    z-index: 9999;
+    inset-block-start: -100vh;
+    inset-inline-start: 0;
+    border-end-end-radius: 0.5rem;
+    background: light-dark(hsl(0 0% 100%), hsl(215 25% 15%));
+    padding-inline: 3.25rem;
+    padding-block: 1rem;
+    color: light-dark(hsl(215 25% 27%), hsl(215 25% 89%));
+  }
+
+  :where(.skip-link a:hover),
+  :where(.skip-link a:focus-visible) {
+    inset-block-start: 0;
+  }
+</style>

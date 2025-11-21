@@ -1,1 +1,47 @@
-@import "tailwindcss";
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+/* ---- Globais seus (CSS comum) ---- */
+:root {
+  /* mantém suas CSS vars, se tiver */
+  /* --link-color: ...; --foreground-color: ...; */
+}
+
+pre {
+  border: 2px solid var(--link-color);
+  border-radius: 0.35rem;
+  padding: 1rem;
+}
+
+/* Sticky footer/estrutura agora vai no HTML com classes utilitárias.
+   Deixa aqui só o que for realmente “global”. */
+.card a {
+  /* substitui o mixin SCSS por CSS nativo */
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  text-decoration-color: transparent;
+}
+.card a:hover,
+.card a:focus-visible {
+  text-decoration-color: var(--foreground-color);
+}
+
+/* Acessibilidade extra */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* (Opcional) Utilitários personalizados com v4 */
+@utility card-link {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  text-decoration-color: transparent;
+}
+@utility card-link-active {
+  text-decoration-color: var(--foreground-color);
+}

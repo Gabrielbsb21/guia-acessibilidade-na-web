@@ -1,0 +1,33 @@
+---
+import '../styles/globals.css'
+import '../assets/scss/index.scss'
+import SiteMeta from '~/components/core/SiteMeta.astro'
+import { ClientRouter } from 'astro:transitions'
+
+const {
+  title = 'Guia acessibilidade web',
+  description = 'Guia completo sobre acessibilidade web, boas práticas e dicas para desenvolver sites acessíveis a todos.',
+  url = Astro.site,
+  image = 'social-preview-image.png',
+  author = 'Gabriel Teixeira da Silva',
+} = Astro.props
+---
+
+<html lang="pt-BR" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <SiteMeta title={title} description={description} url={url} image={image} author={author} />
+    <ClientRouter />
+  </head>
+  <body>
+    <header>
+      header
+    </header>
+    <main id="main-content" transition:animate="fade">
+      <slot />
+    </main>
+    <footer>foorter</footer>
+  </body>
+</html>
