@@ -16,37 +16,25 @@ import { Icon } from 'astro-icon/components'
   <SkipLink />
   <Navigation>
     <li class="menu-item">
-      <Link href="/">Home</Link>
+      <Link href="/">Início</Link>
+    </li>
+    <li class="menu-item">
+      <Link href="/blog/">Componentes</Link>
     </li>
     <li class="menu-item">
       <Link href="/blog/">Blog</Link>
     </li>
-    <li class="menu-item">
-      <Link href="/portfolio/">Portfolio</Link>
-    </li>
     <li class="menu-item has-dropdown">
       <button aria-haspopup="true" aria-expanded="false">
-        Theme features
+        Recursos do Site
         <Icon aria-hidden="true" name="lucide:chevron-down" size="32" />
       </button>
       <ul class="dropdown-menu">
         <li class="submenu-item">
-          <Link href="/accessibility-statement">Accessibility statement</Link>
+          <Link href="/accessibility-statement">Declaração de acessibilidade</Link>
         </li>
         <li class="submenu-item">
-          <Link href="/accessible-components">Accessible components</Link>
-        </li>
-        <li class="submenu-item">
-          <Link href="/color-contrast-checker">Color contrast checker</Link>
-        </li>
-        <li class="submenu-item">
-          <Link href="/markdown-page/">Markdown page</Link>
-        </li>
-        <li class="submenu-item">
-          <Link href="/mdx-page/">MDX page</Link>
-        </li>
-        <li class="submenu-item">
-          <Link href="/404-page">404 page</Link>
+          <Link href="/color-contrast-checker">Verificador de contraste de cores</Link>
         </li>
         <li class="submenu-item">
           <Link href="/sitemap">Sitemap</Link>
@@ -54,15 +42,12 @@ import { Icon } from 'astro-icon/components'
       </ul>
     </li>
     <li class="menu-item">
-      <Link href="/contact/">Contact</Link>
-    </li>
-    <li class="menu-item highlight">
-      <Link href="https://accessible-astro.incluud.dev/">Docs </Link>
+      <Link href="/contact/">Contato</Link>
     </li>
     <li class="menu-item type-icon animate-rotate">
-      <Link href="https://github.com/incluud/accessible-astro-starter">
+      <Link href="https://github.com/Gabrielbsb21/guia-acessibilidade-na-web">
         <Icon aria-hidden="true" name="lucide:github" />
-        <span class="sr-only">Go to the GitHub page</span>
+        <span class="sr-only">Ir para a página do Github</span>
       </Link>
     </li>
     <li class="menu-item type-icon animate-rotate">

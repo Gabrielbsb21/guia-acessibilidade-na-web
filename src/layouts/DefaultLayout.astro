@@ -1,8 +1,10 @@
 ---
-import '../styles/globals.css'
+import '../assets/styles/global.css'
 import '../assets/scss/index.scss'
 import SiteMeta from '~/components/core/SiteMeta.astro'
 import { ClientRouter } from 'astro:transitions'
+import Header from '~/components/core/Header.astro'
+import Footer from '~/components/core/Footer.astro'
 
 const {
   title = 'Guia acessibilidade web',
@@ -22,12 +24,10 @@ const {
     <ClientRouter />
   </head>
   <body>
-    <header>
-      header
-    </header>
+    <Header />
     <main id="main-content" transition:animate="fade">
       <slot />
     </main>
-    <footer>foorter</footer>
+    <Footer />
   </body>
 </html>

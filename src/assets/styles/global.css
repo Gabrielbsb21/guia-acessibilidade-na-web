@@ -1,5 +1,6 @@
 @import "tailwindcss/preflight";
 @import "tailwindcss/utilities";
+@import 'tailwindcss';
 
 /* ---- Globais seus (CSS comum) ---- */
 :root {
