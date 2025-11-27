@@ -1,0 +1,24 @@
+---
+import Link from "../core/Link.astro";
+import { Icon } from "astro-icon/components";
+import { Image } from 'astro:assets'
+import { string } from "astro:schema";
+
+interface Props {
+  src?: string;
+}
+
+const { src = '/astronaut-hero-img.webp' } = Astro.props as Props;
+---
+
+<section class="hero my-24">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-24">
+      <div class="flex flex-col items-center gap-8 md:items-start">
+        <h1 class="">
+          Guia acessibilidade na web
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
