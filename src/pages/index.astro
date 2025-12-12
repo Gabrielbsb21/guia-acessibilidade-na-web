@@ -1,6 +1,8 @@
 ---
-import Hero from '~/components/ui/Hero.astro';
-import DefaultLayout from '~/layouts/DefaultLayout.astro';
+import Hero from '~/components/ui/Hero.astro'
+import Heading from '~/components/core/Heading.astro'
+import DefaultLayout from '~/layouts/DefaultLayout.astro'
+import Feature from '~/components/ui/Feature.astro'
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -8,6 +10,33 @@ import DefaultLayout from '~/layouts/DefaultLayout.astro';
 
 <DefaultLayout title="Início">
   <Hero />
-  <h1>Welcome to Accessible Astro!</h1>
-  <p>This is the home page of your new Astro site.</p>
+  <section class="my-64">
+    <div class="container">
+      <Heading level="h2" class="mb-8">Funcionalidades</Heading>
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+        <Feature icon="lucide:accessibility" title="Acessibilidade por padrão">
+          Navegação por teclado, indicadores de foco, rótulos ARIA, HTML semântico e muito mais. O tema foi pensado para
+          ser acessível desde o início.
+        </Feature>
+        <Feature icon="lucide:puzzle" title="A11Y componentes">
+          Vários componentes acessíveis, todos testados e otimizados para garantir a melhor experiência para seus
+          usuários.
+        </Feature>
+        <Feature icon="lucide:moon" title="Modo escuro">
+          Modo escuro totalmente integrado, oferecendo aos usuários a liberdade de escolher a forma de visualização que
+          preferem.
+        </Feature>
+        <Feature icon="lucide:bookmark" title="Blog">
+          Conte com um blog dedicado à acessibilidade, com artigos, boas práticas e exemplos para aprofundar seu
+          conhecimento.
+        </Feature>
+        <Feature icon="lucide:bookmark" title="Contribua com a comunidade">
+          Projeto open source para você estudar, sugerir melhorias e colaborar com a acessibilidade na web.
+        </Feature>
+        <Feature icon="lucide:bookmark" title="Teste rapidamente a legibilidade das suas cores">
+          Ferramenta integrada para testar o contraste das suas cores e garantir conformidade com a WCAG.
+        </Feature>
+      </div>
+    </div>
+  </section>
 </DefaultLayout>
