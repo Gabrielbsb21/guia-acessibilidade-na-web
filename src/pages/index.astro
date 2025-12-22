@@ -3,9 +3,13 @@ import Hero from '~/components/ui/Hero.astro'
 import Heading from '~/components/core/Heading.astro'
 import DefaultLayout from '~/layouts/DefaultLayout.astro'
 import Feature from '~/components/ui/Feature.astro'
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ContentMedia from '~/components/ui/ContentMedia.astro'
+import Link from '~/components/core/Link.astro'
+import { Icon } from 'astro-icon/components'
+import Accordion from '~/components/core/Accordion/Accordion.astro'
+import AccordionItem from '~/components/core/Accordion/AccordionItem.astro'
+import AvatarGroup from '~/components/core/Avatar/AvatarGroup.astro'
+import Avatar from '~/components/core/Avatar/Avatar.astro'
 ---
 
 <DefaultLayout title="Início">
@@ -37,6 +41,98 @@ import Feature from '~/components/ui/Feature.astro'
           Ferramenta integrada para testar o contraste das suas cores e garantir conformidade com a WCAG.
         </Feature>
       </div>
+    </div>
+  </section>
+  <ContentMedia imgSrc="/home/accessible-components.png">
+    <Heading level="h2">Componentes Acessiveís</Heading>
+    <p class="text-2xl">
+      Construir interfaces acessíveis não deveria ser um esforço extra. Por isso, este guia reúne componentes pensados
+      desde a base com acessibilidade em mente: HTML semântico, navegação por teclado, estados de foco visíveis e uso
+      consciente de ARIA.
+    </p>
+  </ContentMedia>
+  <ContentMedia imgSrc="/home/test.png">
+    <Heading level="h2">Testes de Acessibilidade</Heading>
+    <p class="text-2xl">
+      Acessibilidade não é algo que se valida apenas no final do projeto. Neste guia, você aprende como testar
+      interfaces desde o início, combinando navegação por teclado, leitores de tela e ferramentas automatizadas.
+    </p>
+    <p class="mt-4 text-2xl">
+      O foco é entender o que cada teste realmente avalia, quando confiar em ferramentas automáticas e como identificar
+      problemas que só aparecem na experiência real de uso.
+    </p>
+  </ContentMedia>
+  <section class="my-64">
+    <div class="container grid grid-cols-1 gap-12 md:grid-cols-2">
+      <div class="flex flex-col items-start gap-4">
+        <Heading level="h2">Perguntas frequentes</Heading>
+        <p class="text-2xl">
+          Esta seção reúne as dúvidas mais comuns sobre o Guia de Acessibilidade na Web e apresenta, na prática, como
+          utilizar componentes acessíveis para organizar conteúdo de forma clara, semântica e inclusiva.
+        </p>
+        <Link
+          href="https://github.com/Gabrielbsb21/guia-acessibilidade-na-web/issues"
+          isButton
+          type="primary"
+          animateOnHover
+          animationType="boop"
+        >
+          <Icon aria-hidden="true" name="lucide:headset" size=" 1.5rem" />
+          Problemas? abre uma issue no GitHub
+        </Link>
+      </div>
+      <div class="space-content">
+        <Accordion>
+          <AccordionItem name="exclusive" title="O que é o Guia de Acessibilidade na Web?" open>
+            <p>
+              O Guia de Acessibilidade na Web é um projeto open source criado para ajudar desenvolvedores, designers e
+              equipes de produto a entenderem e aplicarem acessibilidade de forma prática. Ele reúne conceitos, exemplos
+              reais de código, boas práticas e padrões reconhecidos, como WCAG e WAI-ARIA.
+            </p>
+          </AccordionItem>
+
+          <AccordionItem name="exclusive" title="Para quem este guia é indicado?">
+            <p>
+              O guia é voltado principalmente para desenvolvedores front-end, mas também pode ser utilizado por
+              designers, estudantes e qualquer pessoa interessada em criar interfaces mais inclusivas. Não é necessário
+              conhecimento prévio profundo em acessibilidade.
+            </p>
+          </AccordionItem>
+
+          <AccordionItem name="exclusive" title="O guia substitui as diretrizes da WCAG?">
+            <p>
+              Não. O guia não substitui a WCAG, mas atua como um complemento prático. Ele traduz as diretrizes em
+              exemplos aplicáveis no dia a dia do desenvolvimento, ajudando a entender como e quando aplicar cada
+              recomendação de forma consciente.
+            </p>
+          </AccordionItem>
+
+          <AccordionItem name="exclusive" title="Posso usar os componentes do guia em meus projetos?">
+            <p>
+              Sim. Os componentes apresentados no guia são pensados para serem reutilizáveis e adaptáveis. Você pode
+              usá-los como referência, base de estudo ou ponto de partida para criar seus próprios componentes
+              acessíveis em diferentes frameworks.
+            </p>
+          </AccordionItem>
+
+          <AccordionItem name="exclusive" title="Como posso contribuir com o guia?">
+            <p>
+              O Guia de Acessibilidade na Web é um projeto colaborativo. Você pode contribuir sugerindo melhorias,
+              corrigindo conteúdos, adicionando exemplos ou abrindo issues no repositório do projeto. Toda contribuição
+              é bem-vinda.
+            </p>
+          </AccordionItem>
+        </Accordion>
+      </div>
+    </div>
+  </section>
+  <section class="my-64">
+    <div class="space-content container">
+      <Heading level="h2">Nossa Comunidade</Heading>
+      <p class="text-2xl">Construímos juntos um guia acessível para todos</p>
+      <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
+        <Avatar initials="GT" title="Gabriel Teixeira" subtitle="Engenheiro de Software" />
+      </AvatarGroup>
     </div>
   </section>
 </DefaultLayout>

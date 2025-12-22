@@ -1,0 +1,123 @@
+---
+
+/**
+ * Accordion
+ *
+ * @description
+ * Container para itens de accordion acessíveis.
+ * Atua apenas como agrupador semântico dos AccordionItem,
+ * delegando toda a lógica de interação e ARIA para os itens.
+ */
+
+interface AccordionItem { // melhorar essa interface depois
+  /**
+   * Classes adicionais para o item
+   */
+  class?: string
+
+  /**
+   * Título exibido no cabeçalho do accordion
+   */
+  title: string
+
+  /**
+   * Nome opcional para controle de exclusividade
+   * (usado pelo atributo `name` do <details>)
+   */
+  name?: string
+
+  /**
+   * Nível semântico do heading (estrutura do documento)
+   * @default 'h3'
+   */
+  headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+
+  /**
+   * Tamanho visual do heading (estilo)
+   * Pode ser diferente do nível semântico
+   * @default 'h6'
+   */
+  headingSize?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+
+  /**
+   * Variante visual do item
+   * @default 'default'
+   */
+  variant?: 'default' | 'chevron'
+
+  /**
+   * Define se o item inicia aberto
+   * @default false
+   */
+  open?: boolean
+
+  /**
+   * Conteúdo interno do accordion
+   */
+  children?: any
+
+  /**
+   * Permite a passagem de atributos HTML adicionais
+   */
+  [key: string]: string | number | boolean | undefined | any
+}
+
+interface Props {
+  /**
+   * Classes adicionais para o container do accordion
+   */
+  class?: string
+
+  /**
+   * Conteúdo do accordion (AccordionItem)
+   */
+  children: AccordionItem | AccordionItem[]
+
+  /**
+   * Rótulo acessível opcional para leitores de tela
+   * Recomendado quando o contexto não está claro visualmente
+   */
+  'aria-label'?: string
+
+  /**
+   * ID de um elemento que descreve o accordion
+   */
+  'aria-labelledby'?: string
+
+  /**
+   * Atributos HTML adicionais
+   */
+  [key: string]:
+    | string
+    | number
+    | boolean
+    | undefined
+    | AccordionItem
+    | AccordionItem[]
+}
+
+const { class: className, ...rest } = Astro.props
+---
+
+<ul
+  class:list={['accordion', className]}
+  {...rest}
+>
+  <slot />
+</ul>
+
+<style>
+  :where(.accordion) {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  /* Remove borda superior duplicada no primeiro item */
+  :global(:where(.accordion > .item:first-child .wrapper)) {
+    border-block-start: none;
+  }
+</style>
