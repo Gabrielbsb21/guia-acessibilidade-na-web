@@ -1,5 +1,6 @@
 ---
 import Link from '../core/Link.astro'
+import CallToAction from './CallToAction.astro'
 
 /**
  * Footer Component
@@ -10,6 +11,11 @@ const currentYear = new Date().getFullYear()
 ---
 
 <footer>
+  <CallToAction
+    title="Contribua para o Guia de Acessibilidade na Web"
+    link="https://github.com/Gabrielbsb21/guia-acessibilidade-na-web"
+    linkText='Acesse o repositório'
+    />
   <section class="py-8">
     <div class="container flex flex-col gap-4 md:flex-row md:justify-between">
       <p>

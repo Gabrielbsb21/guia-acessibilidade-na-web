@@ -132,7 +132,17 @@ import Avatar from '~/components/core/Avatar/Avatar.astro'
       <p class="text-2xl">Construímos juntos um guia acessível para todos</p>
       <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
         <Avatar initials="GT" title="Gabriel Teixeira" subtitle="Engenheiro de Software" />
+        <Avatar initials="DV" title="Darth Vader" subtitle="Engenheiro de Software" />
+        <Avatar initials="AS" title="Anakin Skywalker" subtitle="Engenheiro de Software" />
       </AvatarGroup>
     </div>
   </section>
 </DefaultLayout>
+
+<style>
+  .avatar {
+    border: 1px solid var(--border-color-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-s);
+  }
+</style>

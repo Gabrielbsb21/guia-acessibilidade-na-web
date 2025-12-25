@@ -1,0 +1,63 @@
+---
+import Link from './Link.astro'
+import Heading from './Heading.astro'
+import { Icon } from 'astro-icon/components'
+
+/**
+ * CallToAction Component
+ *
+ * @description A prominent call-to-action section with a title and link
+ */
+interface Props {
+  title?: string
+  /**
+   * The URL the button should link to
+   * @default "https://github.com/Gabrielbsb21/guia-acessibilidade-na-web"
+   */
+  link?: string
+  /**
+   * The text to display on the button
+   * @default "Get Started"
+   */
+  linkText?: string
+}
+
+const {
+  title = 'Contribua para o Guia de Acessibilidade na Web',
+  link = 'https://github.com/Gabrielbsb21/guia-acessibilidade-na-web',
+  linkText = 'Acessar Repositório',
+} = Astro.props
+---
+
+<section class="container">
+  <article class="call-to-action mt-24 mb-32 flex flex-col items-center gap-12 rounded-xl px-12 py-20 md:px-24">
+    <Heading level="h2" class="text-center text-3xl md:text-6xl">{title}</Heading>
+    <Link href={link} isButton size="lg" animateOnHover animationType="nudge">
+      {linkText}
+      <Icon aria-hidden="true" name="lucide:rocket" size="1.5rem" />
+    </Link>
+  </article>
+</section>
+
+<style lang="scss">
+  @use '../../assets/scss/base/mixins' as *;
+
+  .call-to-action {
+    position: relative;
+    background: linear-gradient(
+      315deg,
+      light-dark(var(--color-primary-100), var(--color-secondary-100)) 25%,
+      light-dark(var(--color-secondary-100), var(--color-primary-200))
+    );
+    color: var(--color-neutral-900);
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+  }
+</style>

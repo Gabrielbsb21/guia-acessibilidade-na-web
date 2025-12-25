@@ -41,6 +41,10 @@
   --text-decoration-color: light-dark(var(--color-neutral-700), var(--color-neutral-100));
   --text-decoration-color-hover: light-dark(var(--color-neutral-100), var(--color-neutral-200));
 
+  --color-default-border: light-dark(hsl(204 8% 55%), hsl(215 15% 45%));
+  --color-default-bg: light-dark(hsl(200 20% 97%), hsl(215 25% 13%));
+  --color-default-text: light-dark(hsl(204 8% 14%), hsl(0 0% 100%));
+
   // theme settings
   --radius-small: 3px;
   --radius-large: 6px;
