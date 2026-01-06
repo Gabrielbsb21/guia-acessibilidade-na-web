@@ -1,0 +1,123 @@
+---
+/**
+ * Breadcrumbs Item Component
+ *
+ * @description An individual breadcrumb item that can be a link or current page indicator
+ */
+
+interface Props {
+  /**
+   * Additional classes to apply to the item
+   */
+  class?: string
+  /**
+   * Text label for the breadcrumb
+   */
+  label: string
+  /**
+   * URL for the breadcrumb link
+   * @default "#"
+   */
+  href?: string
+  /**
+   * Whether this item represents the current page
+   * @default false
+   */
+  currentPage?: boolean
+  /**
+   * Whether this item has an icon
+   * @default false
+   */
+  hasIcon?: boolean
+  /**
+   * HTML attributes to spread on the breadcrumb item
+   */
+  [key: string]: string | number | boolean | undefined
+}
+
+const {
+  class: className,
+  label = 'Breadcrumb',
+  href = '#',
+  currentPage = false,
+  hasIcon = false,
+  ...rest
+} = Astro.props
+---
+
+<li class:list={['item', className]} {...rest}>
+  {
+    currentPage ? (
+      <span aria-current="page" class:list={[hasIcon ? 'has-icon' : '']}>
+        {hasIcon ? (
+          <>
+            <slot name="icon" />
+            <span class="sr-only">{label}</span>
+          </>
+        ) : (
+          label
+        )}
+      </span>
+    ) : (
+      <a href={href} class:list={[hasIcon ? 'has-icon' : '']}>
+        {hasIcon ? (
+          <>
+            <slot name="icon" />
+            <span class="sr-only">{label}</span>
+          </>
+        ) : (
+          label
+        )}
+      </a>
+    )
+  }
+  <slot name="separator">
+    <span class="separator" aria-hidden="true">/</span>
+  </slot>
+</li>
+
+<style>
+  :where(.item) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  :where(.item) :global(.separator) {
+    display: flex;
+    align-items: center;
+  }
+
+  :where(.item) :global(.separator svg) {
+    margin-block-start: 3px;
+  }
+
+  :where(.item) :global(svg) {
+    inline-size: 1rem;
+    block-size: 1rem;
+  }
+
+  :where(li.item:last-child) :global(.separator) {
+    display: none;
+  }
+
+  :where(.has-icon) :global(svg) {
+    display: flex;
+    align-items: center;
+  }
+
+  :where(.item a) {
+    color: currentColor;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  :where(.item a:hover),
+  :where(.item a:focus-visible) {
+    text-decoration: none;
+  }
+
+  :where(.item span[aria-current='page']) {
+    font-weight: 500;
+  }
+</style>

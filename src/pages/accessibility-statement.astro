@@ -1,0 +1,61 @@
+---
+import DefaultLayout from '~/layouts/DefaultLayout.astro'
+import PageHeader from '~/components/ui/PageHeader.astro'
+import Heading from '~/components/core/Heading.astro'
+---
+
+<DefaultLayout title="Declaração de Acessibilidade">
+  <section class="my-12">
+    <PageHeader
+      title="Declaração de Acessibilidade"
+      subtitle="Este documento descreve as práticas e recursos de acessibilidade adotados neste site. Recomendamos que as informações sejam revisadas e ajustadas conforme as características específicas da sua aplicação, tendo como referência as Diretrizes de Acessibilidade para Conteúdo Web (WCAG) 2.2, nível AA."
+      bgType="bordered"
+    />
+  </section>
+  <section class="narrow container my-16">
+    <div class="space-content">
+      <Heading level={'h2'}>Introdução</Heading>
+      <p>
+        Esta declaração de acessibilidade aplica-se ao site <strong>Guia acessibilidade na web</strong>. No <strong
+          >Guia de acessibilidade</strong
+        >, estamos comprometidos em garantir a acessibilidade digital para pessoas com diferentes habilidades e
+        necessidades. Acreditamos que todas as pessoas devem ter acesso igualitário à informação e às funcionalidades da
+        web, independentemente de limitações físicas, sensoriais, cognitivas ou tecnológicas. A acessibilidade é um
+        valor fundamental no nosso compromisso com a criação de uma experiência digital inclusiva, utilizável e
+        respeitosa.
+      </p>
+      <Heading level={'h2'}>Conformidade com as WCAG</Heading>
+      <p>
+        Este site foi desenvolvido com o objetivo de estar em conformidade com as Diretrizes de Acessibilidade para
+        Conteúdo Web (WCAG) 2.2, no nível AA. Essas diretrizes explicam como tornar o conteúdo web mais acessível a
+        pessoas com diferentes tipos de deficiência, incluindo deficiências visuais, auditivas, motoras, cognitivas, de
+        fala, de linguagem, de aprendizagem e neurológicas.
+      </p>
+      <Heading level={'h2'}>Status atual de acessibilidade</Heading>
+      <p>
+        Este site passou por uma avaliação interna de acessibilidade. Até o momento, foram implementadas as seguintes
+        práticas e recursos:
+      </p>
+      <ul class="list-inside list-disc">
+        <li>Uso correto do atributo de idioma (lang) no HTML, favorecendo leitores de tela e tecnologias assistivas</li>
+        <li>Navegação completa por teclado em todos os elementos interativos</li>
+        <li>Contraste de cores adequado para textos e elementos visuais</li>
+        <li>Design responsivo, compatível com diferentes dispositivos e tamanhos de tela</li>
+        <li>Textos alternativos para conteúdos não textuais, como imagens e ícones</li>
+        <li>Uso de atributos ARIA apenas quando necessário, para complementar a semântica nativa</li>
+        <li>Links de atalho para pular conteúdos repetitivos (skip links)</li>
+      </ul>
+      <Heading level={'h2'}>Áreas para melhoria</Heading>
+      <p>
+        Reconhecemos que a acessibilidade é um processo contínuo. Algumas áreas ainda podem ser aprimoradas, como
+        [descrever funcionalidades, componentes ou páginas específicas, se aplicável]. Essas melhorias já fazem parte do
+        nosso plano de evolução do site.
+      </p>
+      <Heading level={'h2'}>Feedback e contato</Heading>
+      <p>
+        Valorizamos o feedback dos usuários sobre a acessibilidade deste site. Caso você encontre alguma barreira ou
+        tenha sugestões de melhoria, pedimos que, se possível, informe:
+      </p>
+    </div>
+  </section>
+</DefaultLayout>

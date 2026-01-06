@@ -1,0 +1,48 @@
+---
+interface BreadcrumbsItem {
+  label: string
+  href?: string
+  currentPage?: boolean
+  hasIcon?: boolean
+  class?: string
+}
+
+interface Props {
+  /**
+   * Additional classes to apply to the breadcrumbs container
+   */
+  class?: string
+  /**
+   * Breadcrumb items to render
+   */
+  children: BreadcrumbsItem | BreadcrumbsItem[]
+  /**
+   * Accessible label for the breadcrumb navigation
+   * @default 'Breadcrumbs'
+   */
+  ariaLabel?: string
+  /**
+   * HTML attributes to spread on the breadcrumbs
+   */
+  [key: string]: string | number | boolean | undefined | BreadcrumbsItem | BreadcrumbsItem[]
+}
+
+const { class: className, ariaLabel = 'Breadcrumbs', ...rest } = Astro.props
+---
+
+<nav class:list={['breadcrumbs', className]} aria-label={ariaLabel} {...rest}>
+  <ol class="list">
+    <slot />
+  </ol>
+</nav>
+
+<style>
+  :where(.breadcrumbs ol) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+</style>
