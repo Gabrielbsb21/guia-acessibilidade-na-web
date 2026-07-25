@@ -13,6 +13,9 @@ export interface ContrastEvaluation {
     aa: boolean
     aaa: boolean
   }
+  nonText: {
+    aa: boolean
+  }
 }
 
 const SHORT_HEX_PATTERN = /^#([\da-f]{3})$/i
@@ -89,6 +92,13 @@ export const evaluateContrast = (ratio: number): ContrastEvaluation => ({
     aa: ratio >= 3,
     aaa: ratio >= 4.5,
   },
+  nonText: {
+    aa: ratio >= 3,
+  },
 })
 
-export const formatContrastRatio = (ratio: number): string => `${ratio.toFixed(2)}:1`
+export const formatContrastRatio = (ratio: number): string => {
+  const truncatedRatio = Math.floor(ratio * 100) / 100
+
+  return `${truncatedRatio.toFixed(2)}:1`
+}
