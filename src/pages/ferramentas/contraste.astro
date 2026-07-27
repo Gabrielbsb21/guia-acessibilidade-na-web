@@ -6,12 +6,12 @@ import PageHeader from '~/components/ui/PageHeader.astro'
 
 <DefaultLayout
   title="Verificador de contraste"
-  description="Ferramenta para verificar contraste entre cor de texto e fundo com status WCAG AA e AAA."
+  description="Ferramenta para verificar contraste de texto e elementos não textuais segundo critérios da WCAG."
 >
   <section class="my-12">
     <PageHeader
       title="Verificador de contraste"
-      subtitle="Confira a proporção de contraste entre texto e fundo e veja se a combinação atende aos critérios <strong>AA</strong> e <strong>AAA</strong> da WCAG para texto normal e texto grande."
+      subtitle="Compare duas cores para avaliar texto nos níveis <strong>AA</strong> e <strong>AAA</strong> e elementos não textuais no nível <strong>AA</strong>."
       bgType="bordered"
       customBreadcrumbLabels={{ ferramentas: 'Ferramentas', contraste: 'Contraste' }}
     />
@@ -20,8 +20,8 @@ import PageHeader from '~/components/ui/PageHeader.astro'
   <section class="container my-16">
     <div class="tool-intro">
       <p>
-        Esta ferramenta mede apenas contraste de cor. Use o resultado como apoio antes de validar foco, semântica,
-        teclado e leitura assistiva.
+        A ferramenta calcula a taxa entre as cores informadas. Para componentes e objetos gráficos, confirme se a parte
+        visual é necessária e se as cores são realmente adjacentes antes de aplicar o resultado.
       </p>
     </div>
     <ContrastChecker />
