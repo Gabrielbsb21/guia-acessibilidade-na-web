@@ -9,13 +9,13 @@ const defaultBackgroundColor = '#FFFFFF'
       <div class="space-content-sm">
         <h2 class="checker-title">Escolha as cores</h2>
         <p>
-          Informe a cor do texto e a cor de fundo em hexadecimal. A ferramenta calcula a proporção de contraste e
-          indica se a combinação atende aos níveis AA e AAA.
+          Informe a cor que deseja avaliar e a cor realmente adjacente. A ferramenta calcula uma única taxa e apresenta
+          os critérios aplicáveis a texto e elementos não textuais.
         </p>
       </div>
 
       <div class="color-field">
-        <label for="contrast-text-color">Cor do texto</label>
+        <label for="contrast-text-color">Cor avaliada</label>
         <div class="field-row">
           <input
             id="contrast-text-color"
@@ -30,17 +30,19 @@ const defaultBackgroundColor = '#FFFFFF'
           />
           <input
             type="color"
-            aria-label="Selecionar cor do texto"
+            aria-label="Selecionar cor avaliada"
             value={defaultTextColor}
             data-color-picker-text
           />
         </div>
-        <p id="contrast-text-color-help" class="field-help">Aceita `#RGB` ou `#RRGGBB`.</p>
+        <p id="contrast-text-color-help" class="field-help">
+          Use a cor do texto, borda, ícone ou indicador. Aceita `#RGB` ou `#RRGGBB`.
+        </p>
         <p id="contrast-text-color-error" class="field-error" data-error-text hidden></p>
       </div>
 
       <div class="color-field">
-        <label for="contrast-background-color">Cor de fundo</label>
+        <label for="contrast-background-color">Cor adjacente</label>
         <div class="field-row">
           <input
             id="contrast-background-color"
@@ -55,12 +57,14 @@ const defaultBackgroundColor = '#FFFFFF'
           />
           <input
             type="color"
-            aria-label="Selecionar cor de fundo"
+            aria-label="Selecionar cor adjacente"
             value={defaultBackgroundColor}
             data-color-picker-background
           />
         </div>
-        <p id="contrast-background-color-help" class="field-help">Use combinações reais do seu design.</p>
+        <p id="contrast-background-color-help" class="field-help">
+          Use a cor de fundo ou outra cor que encoste visualmente no elemento avaliado.
+        </p>
         <p id="contrast-background-color-error" class="field-error" data-error-background hidden></p>
       </div>
     </form>
@@ -69,7 +73,7 @@ const defaultBackgroundColor = '#FFFFFF'
       <section class="preview-panel space-content" aria-labelledby="contrast-preview-title">
         <div class="preview-heading">
           <h2 id="contrast-preview-title" class="checker-title">Prévia</h2>
-          <p class="ratio-badge" aria-live="polite" data-ratio-badge>21.00:1</p>
+          <p class="ratio-badge" data-ratio-badge>21.00:1</p>
         </div>
 
         <div class="preview-surface" data-preview-surface>
@@ -82,32 +86,65 @@ const defaultBackgroundColor = '#FFFFFF'
             Este texto simula um título ou trecho grande.
           </p>
         </div>
+
+        <div class="non-text-preview space-content-sm">
+          <p class="preview-kicker">Elemento não textual</p>
+          <p class="demo-caption">
+            Demonstração: a borda e o indicador usam a cor avaliada sobre a cor adjacente.
+          </p>
+          <div class="non-text-surface" data-preview-non-text-surface>
+            <span class="non-text-indicator" data-preview-non-text-indicator aria-hidden="true"></span>
+          </div>
+        </div>
       </section>
 
       <section class="results-panel space-content" aria-labelledby="contrast-results-title">
         <div class="space-content-sm">
-          <h2 id="contrast-results-title" class="checker-title">Resultado AA e AAA</h2>
-          <p>Texto grande considera pelo menos 24px normal ou 18.66px em negrito.</p>
+          <h2 id="contrast-results-title" class="checker-title">Resultados de contraste</h2>
+          <p>A taxa é a mesma, mas cada tipo de conteúdo possui critérios próprios.</p>
         </div>
 
-        <ul class="results-list" aria-live="polite">
-          <li class="result-card" data-result="normal-aa">
-            <span class="result-label">Texto normal - AA</span>
-            <strong class="result-status">Aprovado para AA</strong>
-          </li>
-          <li class="result-card" data-result="normal-aaa">
-            <span class="result-label">Texto normal - AAA</span>
-            <strong class="result-status">Aprovado para AAA</strong>
-          </li>
-          <li class="result-card" data-result="large-aa">
-            <span class="result-label">Texto grande - AA</span>
-            <strong class="result-status">Aprovado para AA</strong>
-          </li>
-          <li class="result-card" data-result="large-aaa">
-            <span class="result-label">Texto grande - AAA</span>
-            <strong class="result-status">Aprovado para AAA</strong>
-          </li>
-        </ul>
+        <div class="result-group space-content-sm">
+          <div>
+            <h3 class="result-group-title">Texto</h3>
+            <p>Texto grande considera pelo menos 24px normal ou 18.66px em negrito.</p>
+          </div>
+          <ul class="results-list">
+            <li class="result-card" data-result="normal-aa">
+              <span class="result-label">Texto normal - AA</span>
+              <strong class="result-status">Aprovado para AA</strong>
+            </li>
+            <li class="result-card" data-result="normal-aaa">
+              <span class="result-label">Texto normal - AAA</span>
+              <strong class="result-status">Aprovado para AAA</strong>
+            </li>
+            <li class="result-card" data-result="large-aa">
+              <span class="result-label">Texto grande - AA</span>
+              <strong class="result-status">Aprovado para AA</strong>
+            </li>
+            <li class="result-card" data-result="large-aaa">
+              <span class="result-label">Texto grande - AAA</span>
+              <strong class="result-status">Aprovado para AAA</strong>
+            </li>
+          </ul>
+        </div>
+
+        <div class="result-group space-content-sm">
+          <div>
+            <h3 class="result-group-title">Elementos não textuais</h3>
+            <p>
+              Aplica-se à informação visual necessária para identificar componentes, estados e objetos gráficos.
+            </p>
+          </div>
+          <ul class="results-list">
+            <li class="result-card" data-result="non-text-aa">
+              <span class="result-label">WCAG 1.4.11 - AA</span>
+              <strong class="result-status">Aprovado - atinge 3:1</strong>
+            </li>
+          </ul>
+        </div>
+
+        <p class="visually-hidden" aria-live="polite" data-result-announcement></p>
       </section>
     </div>
   </div>
@@ -115,8 +152,10 @@ const defaultBackgroundColor = '#FFFFFF'
   <aside class="checker-note" aria-labelledby="contrast-note-title">
     <h2 id="contrast-note-title" class="checker-title">Importante</h2>
     <p>
-      Contraste é só uma parte da acessibilidade. Mesmo uma combinação aprovada ainda precisa de validação de foco,
-      semântica, teclado e leitura assistiva.
+      Um resultado de 3:1 não confirma sozinho se o elemento visual está no escopo do critério, nem valida área,
+      espessura, estados ou semântica. Para indicadores de foco, esta comparação cobre apenas o contraste com a cor
+      adjacente; a validação completa da WCAG 2.4.13 também considera a mudança entre os estados sem foco e com foco e a
+      área visível do indicador.
     </p>
   </aside>
 </section>
@@ -137,12 +176,16 @@ const defaultBackgroundColor = '#FFFFFF'
     const previewSurface = root.querySelector('[data-preview-surface]')
     const previewBody = root.querySelector('[data-preview-body]')
     const previewLarge = root.querySelector('[data-preview-large]')
+    const nonTextSurface = root.querySelector('[data-preview-non-text-surface]')
+    const nonTextIndicator = root.querySelector('[data-preview-non-text-indicator]')
     const ratioBadge = root.querySelector('[data-ratio-badge]')
+    const resultAnnouncement = root.querySelector('[data-result-announcement]')
     const resultCards = {
       normalAa: root.querySelector('[data-result="normal-aa"]'),
       normalAaa: root.querySelector('[data-result="normal-aaa"]'),
       largeAa: root.querySelector('[data-result="large-aa"]'),
       largeAaa: root.querySelector('[data-result="large-aaa"]'),
+      nonTextAa: root.querySelector('[data-result="non-text-aa"]'),
     }
 
     if (
@@ -155,13 +198,13 @@ const defaultBackgroundColor = '#FFFFFF'
       !(previewSurface instanceof HTMLElement) ||
       !(previewBody instanceof HTMLElement) ||
       !(previewLarge instanceof HTMLElement) ||
-      !(ratioBadge instanceof HTMLElement)
+      !(nonTextSurface instanceof HTMLElement) ||
+      !(nonTextIndicator instanceof HTMLElement) ||
+      !(ratioBadge instanceof HTMLElement) ||
+      !(resultAnnouncement instanceof HTMLElement)
     ) {
       return
     }
-
-    let lastValidTextColor = textPicker.value
-    let lastValidBackgroundColor = backgroundPicker.value
 
     const setFieldError = (field, errorElement, message) => {
       field.setAttribute('aria-invalid', message ? 'true' : 'false')
@@ -184,18 +227,45 @@ const defaultBackgroundColor = '#FFFFFF'
       const ratio = calculateContrastRatio(textColor, backgroundColor)
       const evaluation = evaluateContrast(ratio)
 
-      lastValidTextColor = textColor
-      lastValidBackgroundColor = backgroundColor
-
       previewSurface.style.backgroundColor = backgroundColor
       previewBody.style.color = textColor
       previewLarge.style.color = textColor
-      ratioBadge.textContent = formatContrastRatio(ratio)
+      nonTextSurface.style.backgroundColor = backgroundColor
+      nonTextIndicator.style.color = textColor
+
+      const formattedRatio = formatContrastRatio(ratio)
+      ratioBadge.textContent = formattedRatio
 
       updateResultCard(resultCards.normalAa, evaluation.normalText.aa, 'Aprovado para AA', 'Não atinge AA')
       updateResultCard(resultCards.normalAaa, evaluation.normalText.aaa, 'Aprovado para AAA', 'Não atinge AAA')
       updateResultCard(resultCards.largeAa, evaluation.largeText.aa, 'Aprovado para AA', 'Não atinge AA')
       updateResultCard(resultCards.largeAaa, evaluation.largeText.aaa, 'Aprovado para AAA', 'Não atinge AAA')
+      updateResultCard(
+        resultCards.nonTextAa,
+        evaluation.nonText.aa,
+        'Aprovado - atinge 3:1',
+        'Não atinge 3:1'
+      )
+
+      const normalTextStatus = evaluation.normalText.aaa
+        ? 'texto normal atende AA e AAA'
+        : evaluation.normalText.aa
+          ? 'texto normal atende AA, mas não AAA'
+          : 'texto normal não atinge AA'
+      const largeTextStatus = evaluation.largeText.aaa
+        ? 'texto grande atende AA e AAA'
+        : evaluation.largeText.aa
+          ? 'texto grande atende AA, mas não AAA'
+          : 'texto grande não atinge AA'
+      const nonTextStatus = evaluation.nonText.aa
+        ? 'elementos não textuais atingem 3 para 1'
+        : 'elementos não textuais não atingem 3 para 1'
+
+      const announcement = `Taxa ${formattedRatio}. ${normalTextStatus}; ${largeTextStatus}; ${nonTextStatus}.`
+
+      if (resultAnnouncement.textContent !== announcement) {
+        resultAnnouncement.textContent = announcement
+      }
     }
 
     const syncPickerFromText = (field, picker, normalized) => {
@@ -225,7 +295,6 @@ const defaultBackgroundColor = '#FFFFFF'
       syncPickerFromText(backgroundInput, backgroundPicker, normalizedBackgroundColor)
 
       if (!normalizedTextColor || !normalizedBackgroundColor) {
-        renderValidState(lastValidTextColor, lastValidBackgroundColor)
         return
       }
 
@@ -360,7 +429,6 @@ const defaultBackgroundColor = '#FFFFFF'
     gap: var(--space-xs);
     border-radius: var(--radius-m);
     padding: var(--space-l);
-    transition: background-color 0.2s ease;
   }
 
   .preview-kicker {
@@ -372,7 +440,9 @@ const defaultBackgroundColor = '#FFFFFF'
   }
 
   .preview-body,
-  .preview-large {
+  .preview-large,
+  .demo-caption,
+  .result-group p {
     margin: 0;
   }
 
@@ -385,6 +455,52 @@ const defaultBackgroundColor = '#FFFFFF'
     font-size: 1.75rem;
     line-height: 1.3;
     font-weight: 700;
+  }
+
+  .non-text-preview {
+    border-block-start: 1px solid var(--border-color-subtle);
+    padding-block-start: var(--space-m);
+  }
+
+  .demo-caption,
+  .result-group p {
+    color: var(--color-text-muted, currentColor);
+    font-size: var(--font-size--1);
+  }
+
+  .non-text-surface {
+    display: grid;
+    place-items: center;
+    min-block-size: 7rem;
+    border-radius: var(--radius-m);
+    padding: var(--space-m);
+  }
+
+  .non-text-indicator {
+    display: grid;
+    place-items: center;
+    border: 3px solid currentColor;
+    border-radius: var(--radius-s);
+    inline-size: 3.5rem;
+    block-size: 3.5rem;
+  }
+
+  .non-text-indicator::after {
+    border-radius: 50%;
+    background: currentColor;
+    inline-size: 1rem;
+    block-size: 1rem;
+    content: '';
+  }
+
+  .result-group {
+    border-block-start: 1px solid var(--border-color-subtle);
+    padding-block-start: var(--space-m);
+  }
+
+  .result-group-title {
+    margin: 0;
+    font-size: var(--font-size-1);
   }
 
   .results-list {
@@ -415,6 +531,26 @@ const defaultBackgroundColor = '#FFFFFF'
   .checker-note p,
   .result-label {
     margin: 0;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    inline-size: 1px;
+    block-size: 1px;
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .preview-surface,
+    .non-text-surface,
+    .non-text-indicator {
+      transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+    }
   }
 
   @media (width >= 64rem) {

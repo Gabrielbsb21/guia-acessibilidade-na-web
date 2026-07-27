@@ -14,15 +14,21 @@ Testes: `src/lib/contrast.test.ts`
 
 Responsabilidades:
 
-- Receber cor de texto e cor de fundo em hexadecimal.
+- Receber uma cor avaliada e uma cor adjacente em hexadecimal.
 - Normalizar valores `#RGB` e `#RRGGBB`.
 - Calcular a taxa de contraste entre as duas cores.
-- Exibir resultado para texto normal e texto grande.
-- Informar status para criterios WCAG AA e AAA.
+- Exibir resultados WCAG AA e AAA para texto normal e texto grande.
+- Exibir resultado WCAG 1.4.11, nivel AA, para informacao visual necessaria em componentes de interface e objetos
+  graficos.
+- Demonstrar como a mesma combinacao aparece em texto e em um elemento nao textual.
 
 Limites:
 
 - A ferramenta mede apenas contraste de cor.
+- A pessoa precisa identificar se a informacao visual e necessaria e comparar cores realmente adjacentes.
+- O resultado nao avalia automaticamente componentes, estados, imagens, gradientes, transparencias ou antialiasing.
+- Para indicadores de foco, o resultado cobre apenas contraste com a cor adjacente. Ele nao valida mudanca entre
+  estados, area ou espessura exigidas por outros criterios.
 - Um resultado aprovado nao garante que a interface seja acessivel.
 - A ferramenta nao valida semantica, foco, teclado, conteudo, zoom, leitor de tela nem fluxo real da tarefa.
 
@@ -30,6 +36,8 @@ Validacoes esperadas:
 
 - `npm run test` para cobrir a logica de contraste.
 - Revisao manual dos campos, mensagens de erro, foco e atualizacao visual da ferramenta.
+- Conferir os resultados abaixo, iguais e acima de 3:1.
+- Conferir as demonstracoes e os resultados em modo claro, modo escuro, mobile e desktop.
 - Conferir se mensagens de erro permanecem associadas aos campos via `aria-describedby`.
 
 ## Checklist de revisao a11y

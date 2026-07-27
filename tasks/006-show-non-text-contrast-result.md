@@ -110,4 +110,11 @@ npm run build
 
 ## Status
 
-- Status: Pendente
+- Status: Concluida
+- Data: 2026-07-27
+- Validacoes:
+  - `npm run lint:check`
+  - `npm run test` (10 testes aprovados)
+  - `npm run build` (8 paginas geradas)
+  - Revisao manual em desktop e mobile, nos modos claro e escuro
+  - Revisao manual de campos, seletores de cor, entrada invalida, foco visivel e estados abaixo e acima de 3:1
