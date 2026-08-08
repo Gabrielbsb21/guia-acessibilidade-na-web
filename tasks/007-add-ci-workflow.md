@@ -66,4 +66,4 @@ None.
 ## Status
 
 - [x] Implementada.
-- [ ] Validada no GitHub Actions.
+- [x] Validada no GitHub Actions.
