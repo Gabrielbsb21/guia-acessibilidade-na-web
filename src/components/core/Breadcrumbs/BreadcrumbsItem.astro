@@ -5,6 +5,8 @@
  * @description An individual breadcrumb item that can be a link or current page indicator
  */
 
+import { withBasePath } from '~/lib/url'
+
 interface Props {
   /**
    * Additional classes to apply to the item
@@ -43,6 +45,8 @@ const {
   hasIcon = false,
   ...rest
 } = Astro.props
+
+const finalHref = withBasePath(href)
 ---
 
 <li class:list={['item', className]} {...rest}>
@@ -59,7 +63,7 @@ const {
         )}
       </span>
     ) : (
-      <a href={href} class:list={[hasIcon ? 'has-icon' : '']}>
+      <a href={finalHref} class:list={[hasIcon ? 'has-icon' : '']}>
         {hasIcon ? (
           <>
             <slot name="icon" />

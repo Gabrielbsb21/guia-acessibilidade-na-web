@@ -1,4 +1,6 @@
 ---
+import { withBasePath } from '~/lib/url'
+
 interface Props {
   class?: string
   /**
@@ -45,6 +47,8 @@ const {
   ...rest
 } = Astro.props
 
+const finalSrc = withBasePath(src)
+
 const aspectRatios = {
   '1:1': '1',
   '4:3': '4/3',
@@ -56,7 +60,7 @@ const aspectRatios = {
 
 <div class:list={['media-wrapper', className]} data-ratio={ratio} {...rest}>
   <img
-    src={src}
+    src={finalSrc}
     alt={alt}
     loading={loading}
     decoding={decoding}

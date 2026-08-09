@@ -1,13 +1,18 @@
 ---
+import { withBasePath } from '~/lib/url'
+
 interface Props {
   title: string
   description: string
-  url: string
+  url: string | URL
   image: string
   author?: string
 }
 
 const { title, description, url, image, author = 'Gabriel Teixeira' } = Astro.props
+const siteUrl = Astro.site ?? Astro.url
+const pageUrl = new URL(url.toString(), siteUrl)
+const imageUrl = new URL(withBasePath(image), siteUrl)
 
 let subtitle = 'Guia Acessibilidade na Web'
 ---
@@ -19,7 +24,9 @@ let subtitle = 'Guia Acessibilidade na Web'
 <meta property="og:title" content={`${title} - ${subtitle}`} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
-<meta property="og:url" content={url} />
-<meta property="og:image" content={`${Astro.site}${image}`} />
+<meta property="og:url" content={pageUrl} />
+<meta property="og:image" content={imageUrl} />
+
+<link rel="canonical" href={pageUrl} />
 
 <title>{title} - {subtitle}</title>

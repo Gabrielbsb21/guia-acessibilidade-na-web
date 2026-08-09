@@ -5,12 +5,13 @@ import SiteMeta from '~/components/core/SiteMeta.astro'
 import { ClientRouter } from 'astro:transitions'
 import Header from '~/components/core/Header.astro'
 import Footer from '~/components/core/Footer.astro'
+import { withBasePath } from '~/lib/url'
 
 const {
   title = 'Guia acessibilidade web',
   description = 'Guia prático para implementar, validar e revisar acessibilidade na web com exemplos e critérios reais.',
-  url = Astro.site,
-  image = 'social-preview-image.png',
+  url = Astro.url,
+  image = '/guia-acessibilidade-web.png',
   author = 'Gabriel Teixeira da Silva',
 } = Astro.props
 ---
@@ -20,6 +21,7 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/svg+xml" href={withBasePath('/favicon.svg')} />
     <SiteMeta title={title} description={description} url={url} image={image} author={author} />
     <ClientRouter />
   </head>

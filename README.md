@@ -9,6 +9,12 @@ O objetivo deste repositório é ser uma referência prática para:
 - validar interfaces com checklists simples
 - auditar código gerado com ajuda de IA antes de publicar
 
+## Site publicado
+
+O guia está disponível em [gabrielbsb21.github.io/guia-acessibilidade-na-web](https://gabrielbsb21.github.io/guia-acessibilidade-na-web/).
+
+O deploy para o GitHub Pages é executado automaticamente após mudanças integradas à branch `main`.
+
 ## O que existe hoje
 
 - landing page com posicionamento do projeto

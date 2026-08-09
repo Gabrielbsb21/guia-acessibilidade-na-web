@@ -5,6 +5,7 @@ import Breadcrumbs from '~/components/core/Breadcrumbs/Breadcrumbs.astro'
 import BreadcrumbsItem from '~/components/core/Breadcrumbs/BreadcrumbsItem.astro'
 import Heading from '~/components/core/Heading.astro'
 import Link from '~/components/core/Link.astro'
+import { withBasePath } from '~/lib/url'
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
@@ -34,24 +35,28 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueO
 
   <section class="blog-listing">
     <div class="container">
-      <p class="listing-meta">{posts.length} artigo{posts.length === 1 ? '' : 's'} publicado{posts.length === 1 ? '' : 's'}</p>
+      <p class="listing-meta">
+        {posts.length} artigo{posts.length === 1 ? '' : 's'} publicado{posts.length === 1 ? '' : 's'}
+      </p>
 
       <div class="posts-grid">
-        {posts.map((post) => (
-          <article class="post-card">
-            <div class="post-content">
-              <p class="post-tag">{post.data.category}</p>
-              <Heading level="h2" size="h5">
-                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-              </Heading>
-              <p>{post.data.description}</p>
-              <p class="post-meta">
-                {post.data.pubDate.toLocaleDateString('pt-BR')} · {post.data.readingTime}
-              </p>
-              <Link href={`/blog/${post.id}/`}>Ler artigo</Link>
-            </div>
-          </article>
-        ))}
+        {
+          posts.map((post) => (
+            <article class="post-card">
+              <div class="post-content">
+                <p class="post-tag">{post.data.category}</p>
+                <Heading level="h2" size="h5">
+                  <a href={withBasePath(`/blog/${post.id}/`)}>{post.data.title}</a>
+                </Heading>
+                <p>{post.data.description}</p>
+                <p class="post-meta">
+                  {post.data.pubDate.toLocaleDateString('pt-BR')} · {post.data.readingTime}
+                </p>
+                <Link href={`/blog/${post.id}/`}>Ler artigo</Link>
+              </div>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
