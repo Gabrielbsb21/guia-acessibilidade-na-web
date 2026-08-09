@@ -86,4 +86,4 @@ Publicar automaticamente o build Astro na URL de projeto do GitHub Pages.
 ## Status
 
 - [x] Implementada.
-- [ ] Validada no GitHub Pages.
+- [x] Validada no GitHub Pages.
