@@ -1,22 +1,23 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from 'astro/config'
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite'
 
-import sitemap from '@astrojs/sitemap';
+import sitemap from '@astrojs/sitemap'
 
-import mdx from '@astrojs/mdx';
+import mdx from '@astrojs/mdx'
 
-import partytown from '@astrojs/partytown';
+import partytown from '@astrojs/partytown'
 
-import icon from 'astro-icon';
+import icon from 'astro-icon'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://guia-acessibilidade-web.netlify.app',
+  site: 'https://gabrielbsb21.github.io',
+  base: '/guia-acessibilidade-na-web',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
 
-  integrations: [sitemap(), mdx(), partytown(), icon()]
-});
+  integrations: [sitemap(), mdx(), partytown(), icon()],
+})

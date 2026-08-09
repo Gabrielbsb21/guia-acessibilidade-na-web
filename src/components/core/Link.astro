@@ -4,6 +4,8 @@
  * @description A versatile link component that handles both internal and external links with proper accessibility
  */
 
+import { withBasePath } from '~/lib/url'
+
 interface Props {
   class?: string
   href: string
@@ -85,6 +87,7 @@ const ensureRel = (base: string, extra: string | undefined): string | undefined 
 }
 
 const externalRelDefaults = 'noopener noreferrer'
+const finalHref = withBasePath(href)
 
 // External links keep the security defaults while letting consumers append extra tokens (e.g., rel="me")
 const finalRel = isExternal ? ensureRel(externalRelDefaults, rel) : ensureRel('', rel)
@@ -111,7 +114,7 @@ const buttonClasses = isButton
 ---
 
 <a
-  href={href}
+  href={finalHref}
   class:list={[className, isButton ? buttonClasses : 'link', { 'link--external': isExternal && !isButton }]}
   style={shouldAnimate || pulse ? `--scaleAmount: ${scaleAmount}; --rotateAmount: ${rotateAmount}deg;` : undefined}
   aria-label={ariaLabel}

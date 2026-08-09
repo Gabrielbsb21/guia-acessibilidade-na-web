@@ -5,6 +5,7 @@ import BreadcrumbsItem from '../core/Breadcrumbs/BreadcrumbsItem.astro'
 import Heading from '../core/Heading.astro'
 import { Image } from 'astro:assets'
 import sanitizeHtml from 'sanitize-html'
+import { withoutBasePath } from '~/lib/url'
 
 /**
  * PageHeader Component
@@ -92,7 +93,7 @@ const sanitizedSubtitle: string = subtitle
     {
       showBreadcrumbs &&
         (() => {
-          const path = Astro.url.pathname
+          const path = withoutBasePath(Astro.url.pathname)
           const segments = path.split('/').filter(Boolean)
 
           if (segments.length === 0) {
